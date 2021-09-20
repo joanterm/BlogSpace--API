@@ -1,0 +1,40 @@
+body {
+    background-color: aquamarine;
+    padding: 0;
+    margin: 0;
+}
+
+.heading {
+    background-color: bisque;
+    padding: 1em 0;
+    margin: 0;
+    position: fixed;
+    top: 0; 
+    width: 100%;
+}
+
+.title-area {
+    padding-top: 5em;
+}
+
+form {
+    padding-top: 5em;
+    display: flex;
+    flex-direction: column;  
+    max-width:300px;
+    width: 100%;
+}
+
+input {
+    margin-bottom: 2em;
+    text-align: center;
+    padding: 1em;
+}
+
+textarea {
+    height: 250px;
+    resize: none;
+    padding: 2em;
+    margin-bottom: 3em;
+    text-align: center;
+}
