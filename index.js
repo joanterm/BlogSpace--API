@@ -5,7 +5,10 @@ const postTitle = document.querySelector("#post-title")
 const postBody = document.querySelector("#post-body")
 
 
-fetch(url, {method:"GET"})
+//FETCH ALL DATA FROM THE SERVER (GET)
+fetch(url, {
+    method:"GET"
+})
 .then((response) => {
     return response.json()
 })
@@ -39,10 +42,31 @@ const submitForm = (event) => {
         title: postTitleInfo,
         body: postBodyInfo
     }
+    //FETCH DATA INTO THE SERVER (POST)
+    fetch(url, {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then((response) => {
+        return response.json()
+    })
+    .then((data) => {
+        console.log(data)
+        // let newPost = "" 
+        // let newTitle = data.title
+        // titleArea.innerHTML = newTitle
+    })
+    
+
 
     console.log(postTitleInfo)
     console.log(postBodyInfo)
-    console.log(data)
 }
 
 formCollector.addEventListener("submit", submitForm)
+
+
+
