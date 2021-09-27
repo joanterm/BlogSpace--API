@@ -55,13 +55,23 @@ const submitForm = (event) => {
     })
     .then((data) => {
         console.log(data)
-        // let newPost = "" 
+
+        //APPENDS NEW TITLE + POST INTO DOM
+        // let newAddedTitle = document.createElement("h3")
+        // let newAddedBody = document.createElement("p")
         // let newTitle = data.title
-        // titleArea.innerHTML = newTitle
+        // let newBody = data.body
+        // newAddedTitle.innerHTML = newTitle
+        // newAddedBody.innerHTML = newBody
+        // console.log(newAddedTitle)
+        // document.querySelector(".div").prepend(newAddedTitle, newAddedBody)
+        titleArea.innerHTML = `
+            <h3>${data.title}</h3>
+            <p>${data.body}</p>
+            ${titleArea.innerHTML}
+        `
     })
     
-
-
     console.log(postTitleInfo)
     console.log(postBodyInfo)
 }
