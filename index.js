@@ -1,11 +1,12 @@
 const url = "https://apis.scrimba.com/jsonplaceholder/posts"
 const titleArea = document.querySelector(".title-area")
+const newTitleArea = document.querySelector(".new-title-area")
 const formCollector = document.querySelector("#form-collector")
 const postTitle = document.querySelector("#post-title")
 const postBody = document.querySelector("#post-body")
 
 
-//FETCH ALL DATA FROM THE SERVER (GET)
+//FETCH ALL DATA OF POSTS FROM THE SERVER (GET)
 fetch(url, {
     method:"GET"
 })
@@ -24,28 +25,27 @@ fetch(url, {
             <p>${body}</p>
         `
     })
-    titleArea.innerHTML = displayedText
     console.log(selectedData)
+    titleArea.innerHTML = displayedText     
 })
 
 
 
-
+//SUBMIT FORM
 const submitForm = (event) => {
-    console.log("click")
+    console.log("Form submitted")
     event.preventDefault();
-    // let formInformation = new FormData(event.target)
-    // let postTitle = formInformation.get("post-title")
+
     const postTitleInfo = postTitle.value
     const postBodyInfo = postBody.value
-    const data = {
+    const newPostData = {
         title: postTitleInfo,
         body: postBodyInfo
     }
-    //FETCH DATA INTO THE SERVER (POST)
+    //FETCH DATA OF NEW POST INTO THE SERVER
     fetch(url, {
         method: "POST",
-        body: JSON.stringify(data),
+        body: JSON.stringify(newPostData),
         headers: {
             "Content-Type": "application/json"
         }
@@ -55,23 +55,13 @@ const submitForm = (event) => {
     })
     .then((data) => {
         console.log(data)
-
         //APPENDS NEW TITLE + POST INTO DOM
-        // let newAddedTitle = document.createElement("h3")
-        // let newAddedBody = document.createElement("p")
-        // let newTitle = data.title
-        // let newBody = data.body
-        // newAddedTitle.innerHTML = newTitle
-        // newAddedBody.innerHTML = newBody
-        // console.log(newAddedTitle)
-        // document.querySelector(".div").prepend(newAddedTitle, newAddedBody)
-        titleArea.innerHTML = `
-            <h3>${data.title}</h3>
-            <p>${data.body}</p>
-            ${titleArea.innerHTML}
-        `
-    })
-    
+        let newAddedTitle = document.createElement("h3")
+        let newAddedBody = document.createElement("p")
+        newAddedTitle.innerHTML = data.title
+        newAddedBody.innerHTML = data.body
+        newTitleArea.prepend(newAddedTitle, newAddedBody)
+    })   
     console.log(postTitleInfo)
     console.log(postBodyInfo)
 }
