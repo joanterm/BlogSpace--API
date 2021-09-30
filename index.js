@@ -14,7 +14,7 @@ fetch(url, {
     return response.json()
 })
 .then((data) => {
-    const selectedData = data.slice(0,5)
+    const selectedData = data.slice(0,5) //ONLY FIRST 5 BLOG POSTS
 
     let displayedText = ""
     selectedData.forEach((element) => {
@@ -61,6 +61,8 @@ const submitForm = (event) => {
         newAddedTitle.innerHTML = data.title
         newAddedBody.innerHTML = data.body
         newTitleArea.prepend(newAddedTitle, newAddedBody)
+
+        formCollector.reset() //CLEARS THE FORM
     })   
     console.log(postTitleInfo)
     console.log(postBodyInfo)
